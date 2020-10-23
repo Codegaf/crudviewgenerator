@@ -174,21 +174,22 @@ class CrudViewGenerator extends Command
         foreach ($columns as $name => $column) {
             $id = array_key_exists('id', $column) ? $column['id'] : '';
             $idAttribute = $id ? 'id="'.$id.'"' : '';
+            $label = $column['label'];
             switch ($column['input']) {
                 case 'text':
-                    $form .= '<x-inputs.text col="col-12 col-lg-6" name="' . $name . '" label="' . __($name) . '" '.$idAttribute.' value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
+                    $form .= '<x-inputs.text col="col-12 col-lg-6" name="' . $name . '" label="' . __($label) . '" '.$idAttribute.' value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
                     break;
                 case 'email':
-                    $form .= '<x-inputs.email col="col-12 col-lg-6" name="' . $name . '" '.$id.' label="' . __($name) . '" '.$idAttribute.' value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
+                    $form .= '<x-inputs.email col="col-12 col-lg-6" name="' . $name . '" '.$id.' label="' . __($label) . '" '.$idAttribute.' value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
                     break;
                 case 'date':
-                    $form .= '<x-inputs.date col="col-12 col-lg-6" '.$idAttribute.' label="'.__($name).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
+                    $form .= '<x-inputs.date col="col-12 col-lg-6" '.$idAttribute.' label="'.__($label).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
                     break;
                 case 'time':
-                    $form .= '<x-inputs.time col="col-12 col-lg-6" '.$idAttribute.' label="'.__($name).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
+                    $form .= '<x-inputs.time col="col-12 col-lg-6" '.$idAttribute.' label="'.__($label).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
                     break;
                 case 'textarea':
-                    $form .= '<x-textareas.textarea col="col-12 col-lg-6" rows="6" label="'.__($name).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
+                    $form .= '<x-textareas.textarea col="col-12 col-lg-6" rows="6" label="'.__($label).'" name="'.$name.'" value="{{old(\''.$name.'\', $'.$this->modelCamelCase.'->'.$name.' ?? \'\')}}" />' . PHP_EOL . PHP_EOL;
                     break;
             }
         }
