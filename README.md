@@ -10,7 +10,7 @@ Generador de crud frontend para 10codesoftware.
 Puedes instalar el paquete via composer:
 
 ```bash
-composer require codegaf/crudviewgenerator dev-master
+composer require codegaf/crudviewgenerator
 ```
 
 ## Guía de uso
