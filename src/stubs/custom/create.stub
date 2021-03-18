@@ -1,11 +1,11 @@
 @extends('layouts.contentLayoutMaster')
 
-@section('title', __('pages.create-{{ modelKebab }}'))
+@section('title', __('project.create-{{ modelKebab }}'))
 
 @section('vendor-style')
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/pickadate/pickadate.css')) }}">
-    <link rel="stylesheet" href="{{ asset(mix('css/plugins/forms/validation/form-validation.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-validation.css')) }}">
 
 @endsection
 
@@ -39,9 +39,12 @@
 
     <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
     @if (app()->getLocale() !== 'en')
-        <script src="{{ asset(mix('vendors/js/pickers/pickadate/translations/'.app()->getLocale().'.js')) }}"></script>
-        <script src="{{ asset(mix('js/scripts/forms/validation/messages_'.app()->getLocale().'.js')) }}"></script>
+        <script src="{{ asset(mix('assets/js/template/pickadate/translations/'.app()->getLocale().'.js')) }}"></script>
+        <script src="{{ asset(mix('assets/js/template/validation/messages_'.app()->getLocale().'.js')) }}"></script>
     @endif
+
+    <script src="{{ asset(mix('assets/js/template/validation/validator-config-methods.js')) }}"></script>
+    <script src="{{ asset(mix('assets/js/template/validation/validator-render-errors.js')) }}"></script>
 
 @endsection
 
