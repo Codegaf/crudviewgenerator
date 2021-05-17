@@ -1,0 +1,10 @@
+<form id="create-{{ modelKebab }}" method="post" action="{{ $action }}" novalidate>
+    @csrf
+    {{ isset(${{ modelCamelCase }}) ? method_field('put') : '' }}
+    <div class="row">
+        {{ form }}
+    </div>
+    <div class="row">
+        <x-buttons.button col="col-12" label="forms.save" type="submit" color="primary" class="float-right"/>
+    </div>
+</form>
