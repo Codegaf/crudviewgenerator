@@ -1,5 +1,9 @@
 # Changelog
 
-Todos los cambios notables de la librería irán documentados en este archivo.
+## 2.0.0
 
-## 1.0.0 - Versión inicial
+- Adaptación a la versión de la plantilla 10CodeTemplate 2.0
+- Los blade resultantes de la generación del crud cambian de ubicación. Irán situados en la carpeta resoures/views/project
+
+
+

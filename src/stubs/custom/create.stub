@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
-                    @include('{{ modelCamelCase }}.create-edit-form', ['action' => route('{{ modelCamelCase }}.store')])
+                    @include('project.{{ modelCamelCase }}.create-edit-form', ['action' => route('{{ modelCamelCase }}.store')])
                 </div>
             </div>
         </div>
@@ -39,13 +39,11 @@
 
     <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
     @if (app()->getLocale() !== 'en')
-        <script src="{{ asset(mix('assets/js/template/pickadate/translations/'.app()->getLocale().'.js')) }}"></script>
         <script src="{{ asset(mix('assets/js/template/validation/messages_'.app()->getLocale().'.js')) }}"></script>
     @endif
 
     <script src="{{ asset(mix('assets/js/template/validation/validator-config-methods.js')) }}"></script>
     <script src="{{ asset(mix('assets/js/template/validation/validator-render-errors.js')) }}"></script>
-
 @endsection
 
 @section('page-script')

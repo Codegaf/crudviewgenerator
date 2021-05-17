@@ -1,10 +1,10 @@
 @extends('layouts.contentLayoutMaster')
 
-@section('title', __('pages.{{ modelKebab }}-list'))
+@section('title', __('project.{{ modelKebab }}-list'))
 
 @section('vendor-style')
-    <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/datatables.min.css')) }}">
-
+    <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/dataTables.bootstrap4.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/responsive.bootstrap4.min.css')) }}">
     <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
 @endsection
 
@@ -21,13 +21,10 @@
                 <div class="card-body">
 
                     <div class="row">
-                        {{--@include('includes.filters', ['config' => 'models.{{ modelCamelCase }}.filterColumns'])--}}
+                        {{--@include('project.{{ modelKebab }}.filters')--}}
                     </div>
 
-
-                    <div class="table-responsive">
-                        {{ $dataTable->table() }}
-                    </div>
+                    {{ $dataTable->table() }}
 
                 </div>
             </div>
@@ -38,15 +35,14 @@
 @section('vendor-script')
     {{-- vendor files --}}
     <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.min.js')) }}"></script>
-    <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.buttons.min.js')) }}"></script>
-    <script src="{{ asset(mix('vendors/js/tables/datatable/buttons.bootstrap.min.js')) }}"></script>
     <script src="{{ asset(mix('vendors/js/tables/datatable/datatables.bootstrap4.min.js')) }}"></script>
+    <script src="{{ asset(mix('vendors/js/tables/datatable/dataTables.responsive.min.js')) }}"></script>
+    <script src="{{ asset(mix('vendors/js/tables/datatable/responsive.bootstrap4.js')) }}"></script>
 
     <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
 @endsection
 
 @section('page-script')
-    <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 
     {{ $dataTable->scripts() }}
 
@@ -56,20 +52,22 @@
             let url = $(this).data('href');
 
             Swal.fire({
-                title: '{{ __('global.confirm-question') }}',
-                text: "{{ __('global.confirm-notice') }}",
-                type: 'warning',
+                title: Lang.get('global.confirm-question'),
+                text: Lang.get('global.confirm-notice'),
+                icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: '{{ __('global.continue') }}',
-                confirmButtonClass: 'btn btn-primary',
-                cancelButtonClass: 'btn btn-danger ml-1',
-                cancelButtonText: '{{ __('global.cancel') }}',
+                confirmButtonText: Lang.get('global.continue'),
+                customClass: {
+                    confirmButton: 'btn btn-primary',
+                    cancelButton: 'btn btn-outline-danger ml-1'
+                },
+                cancelButtonText: Lang.get('global.cancel'),
                 buttonsStyling: false,
             }).then(function (result) {
                 if (result.value) {
-                    shortPost(url, { _method: 'DELETE', _token: $('meta[name="csrf-token"]').attr('content') }, true);
+                    shortPost(url, { _method: 'DELETE', _token: $('meta[name="csrf-token"]').attr('content') }, '{{ modelKebab }}-table');
                 }
             })
         });

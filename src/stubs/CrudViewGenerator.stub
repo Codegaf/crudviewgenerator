@@ -89,8 +89,8 @@ class CrudViewGenerator extends Command
     public function handleIndex() {
         $index = $this->getStub('index');
         $index = $this->replaceTextVariables(['{{ modelKebab }}', '{{ modelCamelCase }}'], [$this->modelKebab, $this->modelCamelCase], $index);
-        $this->createPath($this->laravel->resourcePath('/views/'.$this->modelCamelCase));
-        $this->createFile($this->laravel->resourcePath('/views/'.$this->modelCamelCase.'/index.blade.php'), $index);
+        $this->createPath($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase));
+        $this->createFile($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase.'/index.blade.php'), $index);
 
         $this->info('Index creado correctamente');
     }
@@ -101,8 +101,8 @@ class CrudViewGenerator extends Command
     public function handleCreate() {
         $create = $this->getStub('create');
         $create = $this->replaceTextVariables(['{{ modelKebab }}', '{{ modelCamelCase }}'], [$this->modelKebab, $this->modelCamelCase], $create);
-        $this->createPath($this->laravel->resourcePath('/views/'.$this->modelCamelCase));
-        $this->createFile($this->laravel->resourcePath('/views/'.$this->modelCamelCase.'/create.blade.php'), $create);
+        $this->createPath($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase));
+        $this->createFile($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase.'/create.blade.php'), $create);
 
         $this->info('Create creado correctamente');
     }
@@ -113,8 +113,8 @@ class CrudViewGenerator extends Command
     public function handleEdit() {
         $edit = $this->getStub('edit');
         $edit = $this->replaceTextVariables(['{{ modelKebab }}', '{{ modelCamelCase }}'], [$this->modelKebab, $this->modelCamelCase], $edit);
-        $this->createPath($this->laravel->resourcePath('/views/'.$this->modelCamelCase));
-        $this->createFile($this->laravel->resourcePath('/views/'.$this->modelCamelCase.'/edit.blade.php'), $edit);
+        $this->createPath($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase));
+        $this->createFile($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase.'/edit.blade.php'), $edit);
 
         $this->info('Edit creado correctamente');
     }
@@ -127,8 +127,8 @@ class CrudViewGenerator extends Command
         $form = $this->generateForm($columns);
         $createEditForm = $this->getStub('create.edit.form');
         $createEditForm = $this->replaceTextVariables(['{{ modelKebab }}', '{{ modelCamelCase }}', '{{ form }}'], [$this->modelKebab, $this->modelCamelCase, $form], $createEditForm);
-        $this->createPath($this->laravel->resourcePath('/views/'.$this->modelCamelCase));
-        $this->createFile($this->laravel->resourcePath('/views/'.$this->modelCamelCase.'/create-edit-form.blade.php'), $createEditForm);
+        $this->createPath($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase));
+        $this->createFile($this->laravel->resourcePath('/views/project/'.$this->modelCamelCase.'/create-edit-form.blade.php'), $createEditForm);
 
         $this->info('Create Edit Form creado correctamente');
     }
